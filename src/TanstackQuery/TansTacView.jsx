@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { axiosInstance } from './axiox/axiosInstance';
+import { axiosInstance } from '../axiox/axiosInstance';
 
 function TansTacView() {
  const {id}=useParams();
