@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { axiosInstance } from '../axiox/axiosInstance';
+import { H } from 'highlight.run';
 
 
 function TanstackPage() {
@@ -26,6 +27,8 @@ function TanstackPage() {
         // refetchIntervalInBackground: true, 
         // refetchInterval:2000
     });
+
+
     const deletePost=async(id)=>{
         return await axiosInstance.delete(`/photos/${id}`);
     } 

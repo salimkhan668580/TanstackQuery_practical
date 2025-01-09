@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './App.css'
 // import useCounter from './CustomHooks/UseCounter'
 import Home from './Home';
@@ -12,10 +12,23 @@ import ScrolingPage from './TanstackQuery/ScrolingPage';
 
 
 
+
 function App() {
 
   
- 
+  useEffect(() => {
+    const getUrl = async () => {
+      try {
+        const url = await H.getSessionURL();
+        console.log('Session URL is:', url);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getUrl();
+  }, []);
+
 
 
   return (
