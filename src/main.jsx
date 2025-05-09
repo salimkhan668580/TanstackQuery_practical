@@ -18,20 +18,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { H } from 'highlight.run';
 import { ErrorBoundary } from '@highlight-run/react';
 
-// Initialize Highlight.run
-// H.init('zg0ypp0d', {
-//   serviceName: 'frontend-app',
-//   tracingOrigins: true,
-//   networkRecording: {
-//     enabled: true,
-//     recordHeadersAndBody: true,
-//     urlBlocklist: [
-//       // URLs to block
-//       'https://www.googleapis.com/identitytoolkit',
-//       'https://securetoken.googleapis.com',
-//     ],
-//   },
-// });
 
 // zg0ypp0d  -- is project key==
 H.init('zg0ypp0d', {

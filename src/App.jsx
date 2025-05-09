@@ -8,6 +8,8 @@ import TanstackPage from './TanstackQuery/TanstackPage';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import TansTacView from './TanstackQuery/TansTacView';
 import ScrolingPage from './TanstackQuery/ScrolingPage';
+import DiceRoller from './Question/DiceRoller';
+import VideoCall from './AgoraVideo/VideoCall';
 
 
 
@@ -15,7 +17,6 @@ import ScrolingPage from './TanstackQuery/ScrolingPage';
 
 function App() {
 
-  
   useEffect(() => {
     const getUrl = async () => {
       try {
@@ -34,8 +35,11 @@ function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path='/'  element={<TanstackPage/>}/>
+      <Route path='/'  element={<DiceRoller/>}/>
+      {/* <Route path='/'  element={<TanstackPage/>}/> */}
+      <Route path='/home'  element={<Home/>}/>
       <Route path='/scrolling'  element={<ScrolingPage/>}/>
+      <Route path='/video-call'  element={<VideoCall/>}/>
       <Route path='/view/:id'  element={<TansTacView/>}/>
     </Routes>
     </BrowserRouter>
