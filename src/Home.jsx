@@ -24,7 +24,7 @@ function Home() {
       setError('Geolocation is not supported by this browser.');
     }
   }, []);
- 
+
   return (
     <div className='text-center h-screen flex w-full flex-col justify-center items-center'>
       <h1>User Location</h1>

@@ -1,21 +1,50 @@
-import { useContext, useEffect, useState } from 'react'
+import {  useEffect } from 'react'
 import './App.css'
 // import useCounter from './CustomHooks/UseCounter'
 import Home from './Home';
-import { myContext } from './ContextAPI/ContextCount';
-import TanstackPage from './TanstackQuery/TanstackPage';
+// import { myContext } from './ContextAPI/ContextCount';
+// import TanstackPage from './TanstackQuery/TanstackPage';
 
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import TansTacView from './TanstackQuery/TansTacView';
 import ScrolingPage from './TanstackQuery/ScrolingPage';
-import DiceRoller from './Question/DiceRoller';
+// import DiceRoller from './Question/DiceRoller';
 import VideoCall from './AgoraVideo/VideoCall';
+import LinkCopy from './LinkCopy';
+// import Paymentpage from './Payment/Paymentpage';
+import HomePage from './HomePage';
+import { getToken } from "firebase/messaging";
+import { messaging } from "../firebase";
 
 
 
 
 
 function App() {
+
+  
+  async function requestPermission() {
+    //requesting permission using Notification API
+    const permission = await Notification.requestPermission();
+
+    if (permission === "granted") {
+      const token = await getToken(messaging, {
+        vapidKey: "BAclQc7MzH1hVFLvJ3lSAHGVYpG_uWKWr6qNMnrP5eeAxjSV86qzryitHq5tcHntz1Sfe8BqGh9LxCu0DNN0ObM",
+      });
+
+      //We can send token to server
+      console.log("Token generated : ", token);
+    } else if (permission === "denied") {
+      //notifications are blocked
+      alert("You denied for the notification");
+    }
+  }
+
+  
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
 
   useEffect(() => {
     const getUrl = async () => {
@@ -35,7 +64,10 @@ function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path='/'  element={<DiceRoller/>}/>
+      <Route path='/link'  element={<LinkCopy/>}/>
+      {/* <Route path='/'  element={<Paymentpage/>}/> */}
+      <Route path='/'  element={<HomePage/>}/>
+      {/* <Route path='/'  element={<DiceRoller/>}/> */}
       {/* <Route path='/'  element={<TanstackPage/>}/> */}
       <Route path='/home'  element={<Home/>}/>
       <Route path='/scrolling'  element={<ScrolingPage/>}/>
