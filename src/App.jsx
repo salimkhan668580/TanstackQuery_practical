@@ -15,6 +15,7 @@ import LinkCopy from './LinkCopy';
 import HomePage from './HomePage';
 import { getToken } from "firebase/messaging";
 import { messaging } from "../firebase";
+import { axiosInstance } from './axiox/axiosInstance';
 
 
 
@@ -31,8 +32,15 @@ function App() {
       const token = await getToken(messaging, {
         vapidKey: "BAclQc7MzH1hVFLvJ3lSAHGVYpG_uWKWr6qNMnrP5eeAxjSV86qzryitHq5tcHntz1Sfe8BqGh9LxCu0DNN0ObM",
       });
+const fcmBody = {
+  userId: "691ec6c7f95bcee92f88e9ba",
+  deviceType: "web",
+  fcmTokens: [
+    token
+  ]
+};
 
-      //We can send token to server
+ await axiosInstance.post("http://localhost:3000/user/save/fcm", fcmBody);
       console.log("Token generated : ", token);
     } else if (permission === "denied") {
       //notifications are blocked

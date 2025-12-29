@@ -20,14 +20,14 @@ import { ErrorBoundary } from '@highlight-run/react';
 
 
 // zg0ypp0d  -- is project key==
-H.init('zg0ypp0d', {
-  serviceName: "frontend-app",
-  tracingOrigins: true,
-  networkRecording: {
-      enabled: true,
-      recordHeadersAndBody: true,
-  },
-});
+// H.init('zg0ypp0d', {
+//   serviceName: "frontend-app",
+//   tracingOrigins: true,
+//   networkRecording: {
+//       enabled: true,
+//       recordHeadersAndBody: true,
+//   },
+// });
 
 
 
